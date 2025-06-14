@@ -50,7 +50,7 @@ export const contactsReducer = (
       return {
         ...state,
         favorites: [
-          console.log({state}),
+          console.log(state),
           state.all[0].id,
           state.all[1].id,
           state.all[2].id,
