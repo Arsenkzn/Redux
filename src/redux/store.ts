@@ -1,13 +1,17 @@
-import { combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 import { contactsReducer } from "./reducers/contacts";
 import { groupContactsReducer } from "./reducers/group-reducer";
+import { logAtionMiddleware } from "src/pages/logAtionMiddleware";
 
-
-export const store = createStore(
-  combineReducers({
+const rootReducer = combineReducers({
     contacts: contactsReducer,
     groups: groupContactsReducer,
   })
+
+export const store = createStore(
+  rootReducer,
+  undefined,
+  applyMiddleware(logAtionMiddleware),
 );
 
-export type RootState = ReturnType<typeof store.getState>;
+export type RootState = ReturnType<typeof rootReducer>;
