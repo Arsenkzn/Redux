@@ -1,9 +1,9 @@
 import { ProjectActions } from "./../redux/actions/actions";
 import { Middleware } from "redux";
 import { logAction } from "src/metrics/logAction";
-import { RootState } from "src/redux/store";
+import { ROOTState } from "src/redux/store";
 
-export const logAtionMiddleware: Middleware<{}, RootState> = (storeAPI) => {
+export const logAtionMiddleware: Middleware<{}, ROOTState> = (storeAPI) => {
   return function WrapDispatch(next) {
     return function handleAction(action: unknown) {
       if (isProjectAction(action)) {
