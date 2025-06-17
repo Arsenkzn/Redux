@@ -7,7 +7,7 @@ import {
 import { ContactDto } from "src/types/dto/ContactDto";
 import { GroupContactsDto } from "src/types/dto/GroupContactsDto";
 import {
-    FILTER_BY_CURRENT_GROUP_ID_ACTION,
+  FILTER_BY_CURRENT_GROUP_ID_ACTION,
   GET_CONTACT_NAME_ACTION,
   LOAD_CONTACTS_ACTION_FAILURE,
   LOAD_CONTACTS_ACTION_REQUEST,

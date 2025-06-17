@@ -4,15 +4,19 @@ import './index.scss';
 import {MainApp} from './apps/MainApp';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import {store} from './redux/store'
+import {persistor, store} from './redux/store'
+import { PersistGate } from 'redux-persist/es/integration/react';
+import { Store, UnknownAction } from 'redux';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <MainApp />
+    <Provider store={store as Store<unknown, UnknownAction>}>
+      <PersistGate persistor={persistor} loading={<div>Loading...</div>}>
+        <MainApp />
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );

@@ -13,6 +13,10 @@ import {
 } from "../types";
 import { ContactDto } from "src/types/dto/ContactDto";
 
+import { ThunkAction } from "redux-thunk";
+import axios from "axios";
+import { DATA_CONTACT } from "src/__data__";
+import { ROOTState } from "../store";
 
 export const LOAD_CONTACTS_ACTION_REQUEST = "LOAD_CONTACTS_ACTION_REQUEST";
 export const LOAD_CONTACTS_ACTION_FAILURE = "LOAD_CONTACTS_ACTION_FAILURE";
@@ -76,6 +80,33 @@ export const getGroupContactAction = (
 ): GetGroupContactAction => {
   return { type: GET_GROUP_CONTACT_ACTION, payload: { id } };
 };
+
+export const fetchContacts =
+  (): ThunkAction<void, ROOTState, void, ProjectActions> =>
+  async (dispatch) => {
+    try {
+      dispatch(loadContactsActionRequest());
+      const response = await axios.get("http://localhost:3000/contact");
+      dispatch(loadContactsActionSuccess(response.data));
+      dispatch(setFavoritesContactsAction());
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Unknown error";
+      dispatch(loadContactsActionFailure(message));
+      dispatch(loadContactsActionSuccess(DATA_CONTACT));
+    }
+  };
+
+export const fetchGroups =
+  (): ThunkAction<void, ROOTState, void, ProjectActions> =>
+  async (dispatch) => {
+    try {
+      const response = await axios.get("http://localhost:3000/groups");
+      dispatch(loadGroupContactsAction(response.data));
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Unknown error";
+      console.error("Failed to load groups:", message);
+    }
+  };
 
 export type ProjectActions =
   | LoadContactsActionRequest
