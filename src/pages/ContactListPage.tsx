@@ -7,8 +7,8 @@ import {
   getContactNameAction,
   setCurrentGroupIdAction,
   unsetCurrentGroupIdAction,
-} from "src/redux/actions/actions";
-import { useAppDispatch, useAppSelector } from "src/redux/hooks";
+} from "src/store/actions/actions";
+import { useAppDispatch, useAppSelector } from "src/hooks/hooks";
 import { FilterFormValues } from "src/types/common";
 import { ContactDto } from "src/types/dto/ContactDto";
 

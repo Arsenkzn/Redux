@@ -14,7 +14,7 @@ import {
 import { contactsReducer } from "./reducers/contacts";
 import { groupContactsReducer } from "./reducers/group-reducer";
 import { ProjectActions } from "./actions/actions";
-import { logAtionMiddleware } from "src/pages/logAtionMiddleware";
+import { logAtionMiddleware } from "src/pages/logActionMiddleware";
 import { ContactsState, GroupsState } from "./types";
 import { persistStore } from "redux-persist";
 import { persistReducer } from "redux-persist";

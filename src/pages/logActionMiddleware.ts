@@ -1,7 +1,7 @@
-import { ProjectActions } from "./../redux/actions/actions";
+import { ProjectActions } from "../store/actions/actions";
 import { Middleware } from "redux";
 import { logAction } from "src/metrics/logAction";
-import { ROOTState } from "src/redux/store";
+import { ROOTState } from "src/store/store";
 
 export const logAtionMiddleware: Middleware<{}, ROOTState> = (storeAPI) => {
   return function WrapDispatch(next) {
