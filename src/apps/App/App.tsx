@@ -9,8 +9,22 @@ import {
   ContactPage,
 } from "src/pages";
 import { Layout } from "src/components/Layout";
+import { useEffect } from "react";
+import {
+  fetchContacts,
+  fetchGroups,
+  setFavoritesContactsAction,
+} from "src/store/actions/actions";
+import { useAppDispatch } from "src/hooks/hooks";
 
-export const MainApp = () => {
+export const App = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+    dispatch(fetchGroups());
+    dispatch(setFavoritesContactsAction());
+  }, [dispatch]);
   return (
     <ThemeProvider
       breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]}
